@@ -1,0 +1,176 @@
+-- Problem: Select All
+-- Topic: SELECT
+
+-- Task Summary:
+-- Retrieve all columns from the CITY table.
+
+SELECT *
+FROM CITY;
+===============================================
+
+-- Problem: Select By ID
+-- Topic: SELECT, WHERE
+
+-- Task Summary:
+-- Retrieve city details for the record with ID = 1661.
+
+SELECT *
+FROM CITY
+WHERE ID = 1661;
+=======================================================
+
+-- Problem: Employee Names
+-- Topic: SELECT, ORDER BY
+
+-- Task Summary:
+-- Retrieve employee names sorted alphabetically.
+
+SELECT name
+FROM Employee
+ORDER BY name ASC;
+=======================================================
+
+-- Problem: Employee Salaries
+-- Topic: SELECT, WHERE
+
+-- Task Summary:
+-- Find employee names with salary > 2000
+-- and working months < 10.
+
+SELECT name
+FROM Employee
+WHERE salary > 2000
+  AND months < 10;
+===========================================================
+
+-- Problem: Weather Observation Station 1
+-- Topic: SELECT
+
+-- Task Summary:
+-- Retrieve city and state information.
+
+SELECT city, state
+FROM STATION;
+===========================================================
+
+-- Problem: Weather Observation Station 3
+-- Topic: SELECT, DISTINCT, WHERE
+
+-- Task Summary:
+-- Retrieve unique city names with even ID numbers.
+
+SELECT DISTINCT city
+FROM STATION
+WHERE ID % 2 = 0;
+===============================================================
+
+-- Problem: Revising the Select Query I
+-- Topic: SELECT, WHERE
+
+-- Task Summary:
+-- Retrieve cities with population > 100000
+-- and country code 'USA'.
+
+SELECT *
+FROM CITY
+WHERE population > 100000
+  AND countrycode = 'USA';
+==================================================================
+
+-- Problem: Japanese Cities' Names
+-- Topic: SELECT, WHERE
+
+-- Task Summary:
+-- Retrieve names of cities located in Japan.
+
+SELECT name
+FROM CITY
+WHERE countrycode = 'JPN';
+======================================================================
+
+-- Problem: Cities Starting with a Vowel
+-- Topic: SELECT, WHERE, LIKE
+
+-- Task Summary:
+-- Retrieve city names starting with vowels.
+
+SELECT DISTINCT city
+FROM STATION
+WHERE city LIKE 'A%'
+   OR city LIKE 'E%'
+   OR city LIKE 'I%'
+   OR city LIKE 'O%'
+   OR city LIKE 'U%';
+=======================================================================
+
+-- Problem: Cities Ending with a Vowel
+-- Topic: SELECT, WHERE, LIKE
+
+-- Task Summary:
+-- Retrieve city names ending with vowels.
+
+SELECT DISTINCT city
+FROM STATION
+WHERE city LIKE '%A'
+   OR city LIKE '%E'
+   OR city LIKE '%I'
+   OR city LIKE '%O'
+   OR city LIKE '%U';
+====================================================================
+
+-- Problem: Cities Not Starting with a Vowel
+-- Topic: SELECT, WHERE, NOT, LIKE
+
+-- Task Summary:
+-- Retrieve city names that do not start with vowels.
+
+SELECT DISTINCT city
+FROM STATION
+WHERE city NOT LIKE 'A%'
+  AND city NOT LIKE 'E%'
+  AND city NOT LIKE 'I%'
+  AND city NOT LIKE 'O%'
+  AND city NOT LIKE 'U%';
+=======================================================================
+
+
+-- Problem: Higher Than 75 Marks
+-- Topic: SELECT, ORDER BY, STRING FUNCTIONS
+
+-- Task Summary:
+-- Retrieve names of students who scored more than 75 marks.
+-- Sort results by the last three characters of the name.
+-- If last three characters are same, sort by ascending ID.
+
+-- Solution:
+SELECT name
+FROM STUDENTS
+WHERE marks > 75
+ORDER BY RIGHT(name, 3), id ASC;
+=====================================================================
+
+
+-- Problem: Weather Observation Station 12
+-- Topic: SELECT, DISTINCT, WHERE, LIKE
+
+-- Task Summary:
+-- Retrieve distinct city names from the STATION table
+-- that do NOT start with a vowel and do NOT end with a vowel.
+
+-- Solution:
+SELECT DISTINCT CITY
+FROM STATION
+WHERE 
+    (CITY NOT LIKE 'A%' 
+     AND CITY NOT LIKE 'E%' 
+     AND CITY NOT LIKE 'I%' 
+     AND CITY NOT LIKE 'O%' 
+     AND CITY NOT LIKE 'U%')
+    AND
+    (CITY NOT LIKE '%A'
+     AND CITY NOT LIKE '%E'
+     AND CITY NOT LIKE '%I'
+     AND CITY NOT LIKE '%O'
+     AND CITY NOT LIKE '%U');
+==========================================================================
+
