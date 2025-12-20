@@ -1,0 +1,95 @@
+-- ================================================
+-- Problem: Count Cities by Population
+-- Topic: AGGREGATE FUNCTIONS, COUNT, GROUP BY
+
+-- Task Summary:
+-- Count the number of cities in each country.
+-- Retrieve countrycode and total number of cities.
+
+SELECT countrycode, COUNT(*) AS city_count
+FROM CITY
+GROUP BY countrycode;
+==========================================================
+
+-- Problem: Average Population of Each Continent
+-- Topic: AGGREGATE FUNCTIONS, AVG, GROUP BY
+
+-- Task Summary:
+-- Calculate average population of cities for each continent
+-- using the COUNTRY table.
+
+SELECT continent, ROUND(AVG(population)) AS avg_population
+FROM COUNTRY
+GROUP BY continent;
+===============================================================
+
+-- Problem: Top Earners
+-- Topic: AGGREGATE FUNCTIONS, GROUP BY, ORDER BY
+
+-- Task Summary:
+-- Calculate total earnings (salary * months) for employees.
+-- Find the maximum total earnings and number of employees with that earning.
+
+SELECT salary * months AS earnings, COUNT(*) AS num_employees
+FROM Employee
+GROUP BY earnings
+ORDER BY earnings DESC
+LIMIT 1;
+=================================================================================
+
+
+-- Problem: Population Density Difference
+-- Topic: AGGREGATE FUNCTIONS, MAX, MIN
+
+
+-- Task Summary:
+-- Find the difference between the maximum and minimum population density
+-- of cities for each country.
+
+SELECT countrycode,
+       MAX(population) - MIN(population) AS population_diff
+FROM CITY
+GROUP BY countrycode;
+========================================================================================
+
+
+-- Problem: Revising Aggregations
+-- Topic: AGGREGATE FUNCTIONS, COUNT, SUM
+
+-- Task Summary:
+-- For each department, count the number of employees
+-- and sum of their salaries.
+
+SELECT department_id, COUNT(*) AS num_employees, SUM(salary) AS total_salary
+FROM Employee
+GROUP BY department_id;
+========================================================================================
+
+
+-- Problem: Average Salary Above Threshold
+-- Topic: AGGREGATE FUNCTIONS, AVG, HAVING
+
+-- Task Summary:
+-- Calculate average salary per department
+-- only for departments where average salary > 2000.
+
+SELECT department_id, AVG(salary) AS avg_salary
+FROM Employee
+GROUP BY department_id
+HAVING AVG(salary) > 2000;
+===========================================================================================
+
+-- Problem: The Blunder
+-- Topic: AGGREGATE FUNCTIONS, GROUP BY, HAVING
+
+-- Task Summary:
+-- Identify all the cities whose population is strictly less than the average
+-- population of their respective countries.
+-- Retrieve city name and country code.
+
+-- Solution:
+
+SELECT CEIL(AVG(Salary)-AVG(REPLACE(Salary,"0","")))
+FROM EMPLOYEES;
+=========================================================================================================
+
