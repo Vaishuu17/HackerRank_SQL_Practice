@@ -1,0 +1,158 @@
+# 1.Population Census
+
+-- Problem
+
+Find the total population of all cities where the continent is Asia.
+
+--Tables Used
+
+CITY
+
+COUNTRY
+
+-- Task Summary
+
+Join CITY and COUNTRY tables using CountryCode
+
+Filter records where Continent = 'Asia'
+
+Calculate the sum of population
+
+
+-- SQL Solution
+
+SELECT SUM(CITY.POPULATION) AS SUM_OF_POPULATIONS
+FROM CITY 
+LEFT JOIN COUNTRY
+ON CITY.CountryCode = COUNTRY.Code
+WHERE CONTINENT = "Asia";
+============================================================================
+
+# 2.African Cities
+
+--Problem
+
+List the names of all cities located in countries where the continent is Africa.
+
+-- Tables Used
+
+CITY
+
+COUNTRY
+
+
+--Task Summary
+
+Join city and country tables
+
+Filter by Continent = 'Africa'
+
+Display only city names
+
+
+--SQL Solution
+
+SELECT CITY.NAME 
+FROM CITY
+LEFT JOIN COUNTRY
+ON CITY.CountryCode = COUNTRY.Code
+WHERE CONTINENT = "Africa";
+====================================================================================
+
+# 3.Average Population of Each Continent
+
+--Problem
+
+Calculate the average population of cities for each continent, rounded down to the nearest integer.
+
+
+--Tables Used
+
+CITY
+
+COUNTRY
+
+
+-- Task Summary
+
+Join tables using country codes
+
+Group data by continent
+
+Use AVG() aggregation function
+
+Apply FLOOR() to remove decimals
+
+
+-- SQL Solution
+
+SELECT COUNTRY.Continent,FLOOR(AVG(CITY.Population))
+FROM CITY
+INNER  JOIN COUNTRY
+ON CITY.CountryCode = COUNTRY.Code
+GROUP BY COUNTRY.Continent;
+===========================================================================================================
+
+# 4.The Report
+
+--Problem
+Generate a report showing:
+
+Student name
+
+Grade
+
+Marks
+
+Students with grade ≥ 8 should display names.
+Students with grade < 8 should display NULL instead of names.
+Results must be ordered by grade (descending) and name (ascending).
+
+
+-- Tables Used
+
+Students
+
+Grades
+
+
+--Task Summary
+
+
+Join students and grades based on marks range
+
+
+Use conditional logic to show or hide names
+
+
+Apply multiple sorting conditions
+
+
+-- SQL Solution
+SELECT 
+    CASE 
+        WHEN g.grade >= 8 THEN s.name
+        ELSE NULL
+    END AS name,
+    g.grade,
+    s.marks
+FROM students s
+JOIN grades g
+ON s.marks BETWEEN g.min_mark AND g.max_mark
+ORDER BY g.grade DESC, name ASC;
+
+
+
+##  Overall Learnings
+✔ Strong understanding of SQL JOINs
+✔ Hands-on practice with real interview-level problems
+✔ Improved data analysis and query optimization skills
+✔ Confidence to handle JOIN questions in interviews
+
+
+* Platform
+
+
+HackerRank – SQL (Basic Joins)
+
+
